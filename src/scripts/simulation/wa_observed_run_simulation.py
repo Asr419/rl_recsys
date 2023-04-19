@@ -302,7 +302,7 @@ if __name__ == "__main__":
                         slate = bf_agent.get_action(scores, q_val)
                         # print(slate)
                     
-                    selected_doc_feature, response, is_terminal, _, _ = env.step(slate,candidate_docs=candidate_docs_repr_act)
+                    selected_doc_feature, response, is_terminal, _, _ = env.step(slate)
                     # print(response)
                     response = (response - min_rew) / (max_rew - min_rew)
                     b_u_next = update_belief(

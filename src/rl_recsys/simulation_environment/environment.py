@@ -32,12 +32,12 @@ class MusicGym(gym.Env):
         self.curr_user: UserModel
         self.candidate_docs: torch.Tensor
 
-    def step(self, slate: npt.NDArray[np.int_],candidate_docs):
+    def step(self, slate: npt.NDArray[np.int_]):
         # action: is the slate created by the agent
         # observation: is the selected document in the slate
 
         # retrieving fetaures of the slate documents
-        slate_doc_ids = candidate_docs[slate]
+        slate_doc_ids = self.candidate_docs[slate]
         doc_features = torch.Tensor(
             self.doc_catalogue.get_docs_features(slate_doc_ids)
         ).to(device=self.device)
